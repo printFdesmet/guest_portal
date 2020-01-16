@@ -1,0 +1,16 @@
+#skylux_logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#form_content {
+    text-align: center;
+    display: block;
+}
+
+#footer_markup {
+    text-align: center;
+    display: block;
+}
