@@ -10,25 +10,31 @@
     <img id="skylux_logo" src="../static/image/skylux_logo.jpg">
 </header>
 <section id="form_content">
-    <form>
-        Voornaam<br>
-        <input id="first_name" name="first_name" type="text"><br>
-        Achternaam<br>
-        <input id="last_name" name="last_name" type="text"><br>
-        Mail<br>
-        <input id="mail" name="mail" type="text"><br>
-        Company<br>
-        <input id="company" name="company" type="text"><br>
-        Contact person<br>
-        <input id="contact_person" name="contact_person" type="text"><br>
-        Numberplate<br>
-        <input id="numberplate" name="numberplate" type="text"><br><br>
-        <input onclick="send_mail()" type="submit" value="Aanmelden">
+    <form action="guest" method="post">
+        <label for="surname">Voornaam<br>
+            <input name="surname" type="text" required><br>
+        </label>
+        <label for="name">Achternaam<br>
+            <input name="name" type="text" required><br>
+        </label>
+        <label for="mail">Mail<br>
+            <input name="mail" type="text" required><br>
+        </label>
+        <label for="company">Bedrijf<br>
+            <input name="company" type="text"><br>
+        </label>
+        <label for="contact_person">Contactpersoon<br>
+            <input name="contact_person" type="text" required><br>
+        </label>
+        <label for="number_plate">Nummerplaat<br>
+            <input name="number_plate" type="text"><br><br>
+        </label>
+        <input id="submit_button" type="submit" value="Aanmelden">
     </form>
 </section>
 <footer id="footer_markup">
     <p>&copy;SkyluxNV</p>
 </footer>
-<script src="../static/javascript/main.js"></script>
+<!--<script src="../static/javascript/main.js"></script>-->
 </body>
 </html>
