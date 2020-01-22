@@ -1,9 +1,12 @@
 import json
-import os.path
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for
+from flask_mail import Mail
+from pypsrp.powershell import PowerShell, RunspacePool
+from pypsrp.wsman import WSMan
 
 app = Flask(__name__)
+mail = Mail(app)
 
 
 @app.route('/')
@@ -15,28 +18,6 @@ def home():
 def guest():
     if request.method == 'POST':
         user_information = {}
-        #
-        #     if os.path.exists('user_information.json'):
-        #         with open('user_information.json') as informations_file:
-        #             user_information = json.load(informations_file)
-        #
-        #     if request.form['surname'] in user_information.keys():
-        #         return redirect(url_for('home'))
-        #
-        #     if request.form['name'] in user_information.keys():
-        #         return redirect(url_for('home'))
-        #
-        #     if request.form['mail'] in user_information.keys():
-        #         return redirect(url_for('home'))
-        #
-        #     if request.form['company'] in user_information.keys():
-        #         return redirect(url_for('home'))
-        #
-        #     if request.form['contact_person'] in user_information.keys():
-        #         return redirect(url_for('home'))
-        #
-        #     if request.form['number_plate'] in user_information.keys():
-        #         return redirect(url_for('home'))
 
         user_information[request.form['surname']] = {'surname': request.form['surname']}
         user_information[request.form['name']] = {'name': request.form['name']}
@@ -44,15 +25,19 @@ def guest():
         user_information[request.form['company']] = {'company': request.form['company']}
         user_information[request.form['contact_person']] = {'contact_person': request.form['contact_person']}
         user_information[request.form['number_plate']] = {'number_plate': request.form['number_plate']}
+
         with open('user_information.json', 'w') as information_file:
             json.dump(user_information, information_file)
-        return render_template('guest.html',
-                               surname=request.form['surname'],
-                               name=request.form['name'],
-                               mail=request.form['mail'],
-                               company=request.form['company'],
-                               contact_person=request.form['contact_person'],
-                               number_plate=request.form['number_plate'])
+
+        with open('password.txt', 'r') as file:
+            admin_password = file.read()
+
+        wsman = WSMan("SRV-DC-VS-01", username="administrator", password=str(admin_password), cert_validation=False)
+
+        with RunspacePool(wsman) as pool:
+            ps = PowerShell(pool)
+
+        return render_template('guest.html')
     else:
         return redirect(url_for('home'))
 
