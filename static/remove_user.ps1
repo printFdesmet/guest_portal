@@ -1,7 +1,7 @@
 Import-Module activedirectory
 Add-Type -AssemblyName 'System.Web'
 # creates a variable that stores a string that is password enabled
-$password = Get-Content password.txt | ConvertTo-SecureString
+$password = Get-Content password.txt | ConvertTo-SecureString $_. -AsPlainText -Force
 # creates a login object making it possible to login remotly behind the scenes.
 $cred = New-Object System.Management.Automation.PSCredential ("agplastics\administrator", $password)
 
