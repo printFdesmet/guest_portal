@@ -6,16 +6,13 @@
     <title>Skylux Guest Portal</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
-        .bs-example {
-            margin: 20px;
-            text-align: center;
-            display: block;
-        }
-
         .form-group {
             text-align: center;
             display: block;
@@ -33,41 +30,80 @@
             opacity: 0.5;
         }
 
+        .form-control option {
+            text-align: center;
+        }
+
         .form-rounded {
             border-radius: 1rem;
         }
+
+        #dropdown {
+            width: inherit;
+            display: block;
+            align-self: center;
+        }
+
+        .form-text {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        select {
+        {#width: 400px;#} text-align-last: center;
+        }
+
     </style>
 </head>
 <body>
 <header>
     <img id="skylux_logo" src="../static/image/skylux_logo.jpg">
 </header>
-<div class="bs-example">
+<div class="container form-text">
     <form action="guest" method="post">
         <div class="form-group">
             <label for="surname" style="font-family: cursive"><strong>Voornaam</strong>
-                <input name="surname" type="text" class="form-control form-rounded"
+                <input name="surname" type="text" class="form-control form-rounded input-sm form-text"
                        placeholder="Vul hier uw voornaam in."
                        style="text-align: center" required>
             </label>
         </div>
         <div class="form-group">
             <label for="name" style="font-family: cursive"><strong>Achternaam</strong>
-                <input name="name" type="text" class="form-control form-rounded"
+                <input name="name" type="text" class="form-control form-rounded input-sm form-text"
                        placeholder="Vul hier uw achternaam in."
                        style="text-align: center" required>
             </label>
         </div>
         <div class="form-group">
             <label for="mail" style="font-family: cursive"><strong>Mail</strong>
-                <input name="mail" type="email" class="form-control form-rounded"
+                <input name="mail" type="email" class="form-control form-rounded input-sm form-text"
                        placeholder="Vul hier uw mail adres in."
                        style="text-align: center" required>
             </label>
         </div>
         <div class="form-group">
+            <label for="dropdown" style="font-family: cursive"><strong>Wat is de reden van uw komst?</strong>
+                <select id="dropdown" name="dropdown " class="form-control form-rounded input-sm form-text" required>
+                    <option disabled selected value>-- selecteer een optie --</option>
+                    <option value="Consultant">Consultant</option>
+                    <option value="Aannemer">Aannemer</option>
+                    <option value="Klant">Klant</option>
+                    <option value="Bezoeker">Bezoeker</option>
+                    <option value="Jobstudent">Jobstudent</option>
+                    <option value="Andere">Andere</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label style="font-family: cursive"><strong>Omschrijf de reden van uw bezoek.</strong>
+                <textarea class="form-control form-rounded input-sm form-text">Gelieve hier uw omschrijving in te vullen aub...</textarea>
+            </label>
+        </div>
+        <div class="form-group">
             <label for="company" style="font-family: cursive"><strong>Bedrijf</strong>
-                <input name="company" type="text" class="form-control form-rounded"
+                <input name="company" type="text" class="form-control form-rounded input-sm form-text"
                        placeholder="Vul hier het bedrijf in."
                        style="text-align: center">
             </label>
@@ -75,19 +111,21 @@
 
         <div class="form-group">
             <label for="contact_person" style="font-family: cursive"><strong>Contactpersoon</strong>
-                <input name="contact_person" type="text" class="form-control form-rounded"
+                <input name="contact_person" type="text" class="form-control form-rounded input-sm form-text"
                        placeholder="Vul hier in uw contact in." required style="text-align: center">
             </label>
         </div>
         <div class="form-group">
             <label for="number_plate" style="font-family: cursive"><strong>Nummerplaat</strong>
-                <input name="number_plate" type="text" class="form-control form-rounded"
+                <input name="number_plate" type="text" class="form-control form-rounded input-sm form-text"
                        placeholder="Vul hier uw nummerplaat in."
                        style="text-align: center">
             </label>
         </div>
-        <button type="submit" class="btn btn-primary form-rounded" style="font-family: cursive">
-            <strong>aanmelden</strong></button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary form-rounded input-sm" style="font-family: cursive">
+                <strong>aanmelden</strong></button>
+        </div>
     </form>
 </div>
 </body>

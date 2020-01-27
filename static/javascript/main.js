@@ -16,28 +16,20 @@ let mail;
 let company;
 let contact_person;
 let number_plate;
-let btn_submit;
+let dropdown_purpose;
 let mandatory_user_input_array;
 
 //}
 
+dropdown_purpose = document.getElementById("purpose");
+
+
 function instantiate_events() {
-    btn_submit.addEventListener('click',);
+    dropdown_purpose.addEventListener('change', show_other_field())
 }
 
-function store_user_input() {
-    surname = document.getElementById('first_name').innerText;
-    name = document.getElementById('last_name').innerText;
-    mail = document.getElementById('mail').innerText;
-    company = document.getElementById('company').innerText;
-    contact_person = document.getElementById('contact_person').innerText;
-    number_plate = document.getElementById('number_plate').innerText;
+function show_other_field() {
+    if (dropdown_purpose.value === 'Anders') {
 
-    mandatory_user_input_array = [surname, name, mail, contact_person, number_plate];
-
-    for (let i = 0; i < mandatory_user_input_array.length; i++) {
-        if (mandatory_user_input_array[i].innerText === "") {
-            alert(`${mandatory_user_input_array[i].name} is empty.\nPlease provide the required information.`);
-        }
     }
 }

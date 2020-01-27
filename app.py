@@ -3,8 +3,6 @@ import os
 import os.path
 import subprocess, sys
 
-from pypsrp.powershell import PowerShell, RunspacePool
-from pypsrp.wsman import WSMan
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
